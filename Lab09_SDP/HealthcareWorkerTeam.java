@@ -8,10 +8,12 @@ package lab09;
  *
  * @author Asus
  */
-import java.util.ArrayList;
+//import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class HealthcareWorkerTeam implements HealthcareServiceable{
-    private ArrayList<HealthcareServiceable> members =new ArrayList<HealthcareServiceable>();
+    private Set<HealthcareServiceable> members =new HashSet<HealthcareServiceable>();
 
     public void addMember(HealthcareServiceable name){
         members.add(name);
@@ -28,7 +30,7 @@ public class HealthcareWorkerTeam implements HealthcareServiceable{
     @Override
     public double getPrice() {
         double price = 0;
-        for (HealthcareServiceable i : members) {
+        for (HealthcareServiceable i : members) { 
             price += i.getPrice();
         }
         return price;
