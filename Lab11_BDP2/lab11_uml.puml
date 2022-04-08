@@ -1,0 +1,60 @@
+@startuml
+
+class AgeSortStrategy{
+   + customSort(List<Person> people) : void
+}
+
+class HeightSortStrategy{
+   + customSort(List<Person> people) : void
+}
+
+
+class NameSortStrategy{
+   + customSort(List<Person> people) : void
+}
+
+class WeightSortStrategy{
+   + customSort(List<Person> people) : void
+}
+
+class Person{
+   - name : String
+   - age : Integer
+   - weight : Integer
+   - height : Integer
+   + getName(name : String) : String
+   + setName() : void
+   + getWeight(weight : Integer) : Integer
+   + setWeight() : void
+   + getHeight(height : Integer) : Integer
+   + setHeight() : void
+   + getAge(age : Integer) : Integer
+   + setAge() : void
+}
+
+class People{
+    - members : List<Person>
+    - sortStrategy : SortStrategy
+    + People()
+    + setSortStrategy(sortStrategy : SortStrategy) : void
+    + addMember(p : Person) : void
+    + print(out : PrintStream) : void
+}
+
+interface SortStrategy{
+    customSort(people : List<Person>) : void
+}
+
+'SortStrategy implements
+AgeSortStrategy ..|> SortStrategy
+HeightSortStrategy ..|> SortStrategy
+WeightSortStrategy ..|> SortStrategy
+NameSortStrategy ..|> SortStrategy
+
+People o--> SortStrategy
+People --> Person
+People --> NameSortStrategy
+
+@enduml
+
+'Wayu Saengphithak 63015161
